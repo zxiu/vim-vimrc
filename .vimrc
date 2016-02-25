@@ -1,4 +1,5 @@
 set nocompatible              " be iMproved, required
+set encoding=utf8
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -10,6 +11,41 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" 1 tab to 2 space for ruby
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+"show line number
+set nu
+
+" input source improve from gui vim
+if has("gui_running")
+	set noimdisable
+	set imi=2
+	set ims=2
+endif
+
+set noswapfile
+" to switch between buffers with unsaved change
+set hidden
+
+" highlight col and line
+set cursorline
+" set cursorcolumn
+
+if has("gui_running")
+	colorscheme desert
+	set bs=2
+	set ruler
+	set gfn=Monaco:h16
+	set shell=/bin/bash
+endif
+
+" EasyMotion_leader_key"
+let mapleader=","
+
+" Plugin Plugin here for Ruby on Rails
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -17,14 +53,32 @@ Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'wincent/command-t'
+
 " git repos on your local machine (i.e. when working on your own plugin)
-Plugin 'file:///home/gmarik/path/to/plugin'
+" Plugin 'file:///home/gmarik/path/to/plugin'
+
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L9
 Plugin 'user/L9', {'name': 'newL9'}
+
+" Plugin here for Ruby on Rails
+
+" ruby command for rvm
+Plugin 'tpope/vim-rvm'
+
+" Quickly move cursor, try ,,w
+Plugin 'Lokaltog/vim-easymotion'
+
+" Quickly write HTML, just like zencoding but simple enough
+" Bundle 'rstacruz/sparkup', {'rtp':'vim/'}
+" let g:sparkupNextMapping="<c-m>"
+
+Plugin 'mattn/emmet-vim'
+
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
