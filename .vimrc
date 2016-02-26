@@ -1,5 +1,12 @@
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" see :h vundle for more details or wiki for FAQ
+
 set nocompatible              " be iMproved, required
-set encoding=utf8
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -11,13 +18,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" 1 tab to 2 space for ruby
-set tabstop=2
+set tabstop=2 " 1 tab to 2 space for ruby
 set softtabstop=2
 set shiftwidth=2
 set expandtab
-"show line number
-set nu
+set nu "show line number
 
 " input source improve from gui vim
 if has("gui_running")
@@ -46,10 +51,54 @@ endif
 let mapleader=","
 
 " Plugin Plugin here for Ruby on Rails
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+
+Plugin 'tpope/vim-fugitive' " plugin on GitHub repo
+Plugin 'Lokaltog/vim-easymotion' " Quickly move cursor, try ,,w
+
+" Quickly write HTML, just like zencoding but simple engough
+" Bundle 'rstacurz/sparkupi', {'rtp': 'vim/'}
+" let g:sparkupNextMapping= "<c-m>"
+
+Plugin 'mattn/emmet-vim'
+let g:user_emmet_install_global = 0
+let g:user_emmet_mode='iv'
+autocmd FileType html,css,eruby EmmetInstall
+
+Plugin 'tpope/vim-rails.git' " Powerful vim pulgin for rails
+set completefunc=syntaxcomplete#Complete " Vim rails synatax complete, try ctrl+x ctrl+u
+
+Plugin 'vim-scripts/The-NERD-Commenter' " Quickly comment your code, try ,cc on selected line
+let g:indent_guides_guide_size = 1 " Indent guides
+
+Plugin 'nathanaelkane/vim-indent-guides'
+map <silent><F7> <leader>ig " indent guides shortcut
+
+Plugin 'godlygeek/tabular' " Vim script for text filtering and alignment, try :helptags or :help tabular
+Plugin 'plasticboy/vim-markdown' " Markdown Vim Mode http://plasticboy.com/markdown-vim-mode/
+
+" A tree explorer plugin for vim. https://github.com/scrooloose/nerdtree
+Plugin 'scrooloose/nerdtree'
+map <silent><F8> :NERDTree<CR>
+
+Plugin 'kchma/vim-coffee-script' " CoffeeScript support for vim
+autocmd BufNewFile, BufRead *.coffee set filetype=coffee
+
+Plugin 'slim-template/vim-slim.git' " Slim template support
+autocmd BufNewFile, BufRead *.slim set filetype=slim " Hack filetype for slim
+
+Plugin 'kien/ctrlp.vim' " Quickly search file(s), use ctrl+p, F5 refresh
+let g:ctrlp_map='<c-p>'
+let g:ctrlp_cmd='CtrlP'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+" let g:ctrlp_custom_ignore = '\v[\/] \.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = '\v[\/]\.(DS_Store|git|hg|svn) | (optimized|compiled|node_modules)$' 
+map <c-o> : CtrlPBuffer<CR>
+
+
+
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -61,24 +110,18 @@ Plugin 'wincent/command-t'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+
 " Avoid a name conflict with L9
-Plugin 'user/L9', {'name': 'newL9'}
+" Plugin 'user/L9', {'name': 'newL9'}
 
 " Plugin here for Ruby on Rails
 
 " ruby command for rvm
 Plugin 'tpope/vim-rvm'
 
-" Quickly move cursor, try ,,w
-Plugin 'Lokaltog/vim-easymotion'
 
-" Quickly write HTML, just like zencoding but simple enough
-" Bundle 'rstacruz/sparkup', {'rtp':'vim/'}
-" let g:sparkupNextMapping="<c-m>"
-
-Plugin 'mattn/emmet-vim'
-
-
+Plugin 'JulesWang/css.vim' " Cutting-edge vim css syntax file
+Plugin 'cakebaker/sass-syntax.vim' " Vim syntax file for scss (Sassy CSS)
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
