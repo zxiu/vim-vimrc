@@ -121,7 +121,7 @@ Plugin 'tpope/vim-rvm'
 
 
 Plugin 'JulesWang/css.vim' " Cutting-edge vim css syntax file
-Plugin 'cakebaker/sass-syntax.vim' " Vim syntax file for scss (Sassy CSS)
+Plugin 'cakebaker/scss-syntax.vim' " Vim syntax file for scss (Sassy CSS)
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
